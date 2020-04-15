@@ -1,5 +1,5 @@
 # Virtual Bank
-This is a bank simulator. It can make a transfer between two accounts, can withdraw and deposit money.
+This project is a bank simulator. It can make a transfer between two accounts, can withdraw and deposit money.
 
 To start the bank, run the following command in the console.
 ```
