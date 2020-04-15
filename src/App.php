@@ -34,6 +34,13 @@ class App {
             echo "Smith withdraws 400: \n";
             echo "John has now: " . (string)$john->getBalance() . "\n";
             echo "Smith has now: " . (string)$smith->getBalance() . "\n";
+            echo "---------------------------------------------------\n";
+            
+            // john deposits 800
+            $bank->deposit($john, 800);
+            echo "John deposits 800: \n";
+            echo "John has now: " . (string)$john->getBalance() . "\n";
+            echo "Smith has now: " . (string)$smith->getBalance() . "\n";
 
         } catch (Exception $e) {
             echo "Exception: " . $e->getMessage();
