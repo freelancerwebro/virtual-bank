@@ -2,22 +2,37 @@
 declare(strict_types = 1);
 
 namespace VirtualBank;
+use VirtualBank\Interfaces\Cashable;
 use VirtualBank\Interfaces\Accountable;
+use VirtualBank\Interfaces\Transferable;
 
-class Bank {
-    public function transfer(Accountable $firstAccount, Accountable $secondAccount, float $amount) : void
+class Bank implements Cashable, Transferable {
+    private $firstAccount;
+    private $secondAccount;
+
+    public function setFirstAccount(Accountable $account) : void
     {
-        $firstAccount->withdraw($amount);
-        $secondAccount->deposit($amount);
+        $this->firstAccount = $account;
     }
 
-    public function withdraw(Accountable $account, float $amount) : void
+    public function setSecondAccount(Accountable $account) : void
     {
-        $account->withdraw($amount);
+        $this->secondAccount = $account;
     }
 
-    public function deposit(Accountable $account, float $amount) : void
+    public function transfer(float $amount) : void
     {
-        $account->deposit($amount);   
+        $this->firstAccount->withdraw($amount);
+        $this->secondAccount->deposit($amount);
+    }
+
+    public function withdraw(float $amount) : void
+    {
+        $this->firstAccount->withdraw($amount);
+    }
+
+    public function deposit(float $amount) : void
+    {
+        $this->firstAccount->deposit($amount);
     }
 }

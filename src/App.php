@@ -23,21 +23,25 @@ class App {
             echo "---------------------------------------------------\n";
 
             // transfer 200
-            $bank->transfer($john, $smith, 200);
+            $bank->setFirstAccount($john);
+            $bank->setSecondAccount($smith);
+            $bank->transfer(200);
             echo "Transfer 200 from John to Smith: \n";
             echo "John has now: " . (string)$john->getBalance() . "\n";
             echo "Smith has now: " . (string)$smith->getBalance() . "\n";
             echo "---------------------------------------------------\n";
 
             // smith withdraws 400
-            $bank->withdraw($smith, 400);
+            $bank->setFirstAccount($smith);
+            $bank->withdraw(400);
             echo "Smith withdraws 400: \n";
             echo "John has now: " . (string)$john->getBalance() . "\n";
             echo "Smith has now: " . (string)$smith->getBalance() . "\n";
             echo "---------------------------------------------------\n";
             
             // john deposits 800
-            $bank->deposit($john, 800);
+            $bank->setFirstAccount($john);
+            $bank->deposit(800);
             echo "John deposits 800: \n";
             echo "John has now: " . (string)$john->getBalance() . "\n";
             echo "Smith has now: " . (string)$smith->getBalance() . "\n";
