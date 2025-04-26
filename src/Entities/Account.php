@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VirtualBank\Entities;
 
 use VirtualBank\Exceptions\InvalidDepositException;
+use VirtualBank\Exceptions\InvalidWithdrawException;
 use VirtualBank\Interfaces\Accountable;
 use VirtualBank\Interfaces\Cashable;
 use VirtualBank\Exceptions\InsufficientFundsException;
@@ -53,12 +54,17 @@ class Account implements Accountable, Cashable
 
     /**
      * @throws InsufficientFundsException
+     * @throws InvalidWithdrawException
      */
     public function withdraw(float $amount): void
     {
         if ($amount > $this->balance) {
             throw new InsufficientFundsException('Not enough funds.');
         }
+        if ($amount <= 0) {
+            throw new InvalidWithdrawException('Deposit amount must be greater than zero.');
+        }
+
         $this->balance -= $amount;
     }
 }
