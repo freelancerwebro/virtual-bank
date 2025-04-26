@@ -8,18 +8,22 @@ php index.php
 
 ### Output
 ```
-John has: 400
-Smith has: 300
----------------------------------------------------
-Transfer 200 from John to Smith: 
-John has now: 200
-Smith has now: 500
----------------------------------------------------
-Smith withdraws 400: 
-John has now: 200
-Smith has now: 100
----------------------------------------------------
-John deposits 800: 
-John has now: 1000
-Smith has now: 100
+John's balance: 500
+Smith's balance: 200
+-----------------------------------------
+Transferring 200 from John to Smith...
+John's balance: 300
+Smith's balance: 400
+-----------------------------------------
+Smith withdraws 400...
+Smith's balance after withdrawal: 0
+-----------------------------------------
+John deposits 500...
+John's balance after deposit: 800
+-----------------------------------------
+```
+
+### Running Tests
+```
+composer test
 ```
